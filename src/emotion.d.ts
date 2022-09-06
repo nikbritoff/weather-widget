@@ -7,24 +7,6 @@ declare module '@emotion/react' {
     caption: string,
     textPrimary: string,
     textSecondary: string,
-    // light: {
-    //   shadow: string,
-    //   bg: string,
-    //   caption: string,
-    //   textPrimary: string,
-    //   textSecondary: string,
-    // },
-    // dark: {
-    //   shadow: string,
-    //   bg: string,
-    //   caption: string,
-    //   textPrimary: string,
-    //   textSecondary: string,
-    // },
-    // colors: {
-    //   dark: string,
-    //   light: string,
-    // },
   }
 }
 

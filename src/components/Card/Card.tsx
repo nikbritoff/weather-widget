@@ -70,13 +70,9 @@ const Card = ({ city, gettingCoords, coordsError}: CardProps): JSX.Element => {
 
       requestCurrentWeather(city.lat, city.lon)
       .then(data => {
-        // setData(res);
-        // setIsError(false);
         setCardState({ status: 'success', data });
       })
         .catch((error) => setCardState({ status: 'error', error }));
-        // .catch(() => setIsError(true))
-        // .finally(() => setIsLoading(false));
     }
   }, [city, gettingCoords]);
 
