@@ -1,7 +1,4 @@
-/** @jsxImportSource @emotion/react */
-
-import { css, useTheme } from '@emotion/react';
-import styles from './Card.module.scss';
+import styled from '@emotion/styled';
 import MockImage from '../../assets/spb.jpg'
 import Description from './Description/Description';
 import { useEffect, useState } from 'react';
@@ -24,6 +21,26 @@ type CardState =
   | { status: 'success', data: WeaterData }
   | { status: 'idle' };
 
+const StyledCard = styled.div`
+  width: 243px;
+  height: 332px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: ${props => props.theme.bg};
+  box-shadow: 0px 8px 16px ${props => props.theme.shadow};
+`;
+
+const StyledImageContainer = styled.div`
+  position: relative;
+  height: 239px;
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
 const CardError = ({ message }: { message : string }): JSX.Element => {
   return (
     <Error>
@@ -35,24 +52,17 @@ const CardError = ({ message }: { message : string }): JSX.Element => {
 const CardContent = ({ main, name, weather }: WeaterData) => {
   return (
     <>
-      <div className={styles.imageWrapper}>
-        <img className={styles.image} src={MockImage} alt="City" width="243" />
+      <StyledImageContainer>
+        <StyledImage src={MockImage} alt="City" width="243" />
         <Info temp={main.temp} city={name} />
-      </div>
+      </StyledImageContainer>
       <Description weather={weather[0]} />
     </>
   );
 };
 
 const Card = ({ city, gettingCoords, coordsError}: CardProps): JSX.Element => {
-  const theme = useTheme();
-
   const [cardState, setCardState] = useState<CardState>({ status: 'idle' })
-
-  const cardStyle = css({
-    backgroundColor: theme.bg,
-    boxShadow: `0px 8px 16px ${theme.shadow}`,
-  });
 
   useEffect(() => {
     if (!gettingCoords && city.lat) {
@@ -71,12 +81,12 @@ const Card = ({ city, gettingCoords, coordsError}: CardProps): JSX.Element => {
   }, [city, gettingCoords]);
 
   return (
-    <div className={styles.card} css={cardStyle}>
+    <StyledCard>
       {coordsError && <CardError message="Geolocation error" />}
       {(cardState.status === 'loading' || cardState.status === 'idle') && <Loading />}
       {cardState.status === 'error' && <CardError message={cardState.error.message} />}
       {cardState.status === 'success' && <CardContent {...cardState.data} />}
-    </div>
+    </StyledCard>
   );
 };
 

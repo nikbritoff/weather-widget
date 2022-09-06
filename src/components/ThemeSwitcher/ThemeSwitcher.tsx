@@ -1,40 +1,52 @@
-/** @jsxImportSource @emotion/react */
-
-import { css, useTheme } from '@emotion/react';
-import cn from 'classnames';
+import ImageEyeClose from '../../assets/icons/eye-close.svg';
+import ImageEyeOpen from '../../assets/icons/eye-open.svg';
+import styled from '@emotion/styled';
 import Toggle from '../../shared/Toggle/Toggle';
-import styles from './ThemeSwitcher.module.scss';
 
 type ThemeSwitcherProps = {
   isDark: boolean,
   changeTheme: () => void,
 };
 
+const StyledContainer = styled.div`
+  height: 24px;
+  display: flex;
+  position: fixed;
+  top: 100px;
+  right: 100px;
+`;
+
 const ThemeSwitcher = ({ isDark, changeTheme } : ThemeSwitcherProps): JSX.Element => {
-  const theme = useTheme();
+  const StyledButton = styled.button`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border-style: none;
+  margin-right: 5px;
+  background-color: ${props => props.theme.textSecondary};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
 
-  const buttonStyle = css({    
-    backgroundColor: theme.textSecondary,
-  });
-
+  background-image: url(${isDark ? ImageEyeClose : ImageEyeOpen});
+  background-size: 16px ${isDark ? '8px' : '12px'};
+`;
   return (
-    <div className={styles.switcherWrapper}>
-      <button
-        className={cn(
-          styles.themeButton,
-          isDark ? styles.themeButtonDark : styles.themeButtonLight,
-        )}
-        css={buttonStyle}
+    <StyledContainer>
+      <StyledButton
         onClick={changeTheme}
       >
         <span className="visuallyHidden">Change theme</span>
-      </button>
+      </StyledButton>
       <Toggle
         name="theme-switcher"
         isActive={isDark}
         changeAction={changeTheme}
       />
-    </div>
+    </StyledContainer>
   );
 };
 

@@ -1,12 +1,23 @@
+import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import BarLoader from 'react-spinners/BarLoader';
-import styles from './Loading.module.scss';
+
+const StyledContainer = styled.div`
+  display: flex;
+  background-color: inherit;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
 
 const Loading = (): JSX.Element => {
+  const theme = useTheme();
+
   return (
-    <div className={styles.loading}>
-      <BarLoader color='#191919' />
-    </div>
-      
+    <StyledContainer>
+      <BarLoader color={theme.textPrimary} />
+    </StyledContainer>
   );
 }
 

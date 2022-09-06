@@ -1,8 +1,4 @@
-/** @jsxImportSource @emotion/react */
-
-import { css, useTheme } from '@emotion/react';
-import styles from './Toggle.module.scss';
-import cn from 'classnames';
+import styled from '@emotion/styled';
 
 type ToggleProps = {
   name: string;
@@ -10,28 +6,47 @@ type ToggleProps = {
   changeAction: () => void;
 };
 
+const StyledLabel = styled.label`
+  display: block;
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: ${props => props.theme.textSecondary};
+  border-radius: 50px;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: ${props => props.theme.caption};
+    border-radius: 50%;
+  }
+`;
+
+const StyledInput = styled.input`
+  &:checked + label::before {
+    left: auto;
+    right: 4px;
+  }
+`;
+
 const Toggle = ({ name, isActive, changeAction }: ToggleProps): JSX.Element => {
-  const theme = useTheme();
-
-  const labelStyle = css({
-    backgroundColor: theme.textSecondary,
-    
-    '&::before': {
-      backgroundColor: theme.caption,
-    }
-  });
-
   return (
     <>
-      <input
-        className={cn('visuallyHidden', styles.input)}
+      <StyledInput
+        className={'visuallyHidden'}
         type="checkbox"
         name={name}
         id={name}
         checked={isActive}
         onChange={changeAction}
-      ></input>
-      <label className={styles.label} css={labelStyle} htmlFor={name}></label>
+      ></StyledInput>
+      <StyledLabel htmlFor={name}></StyledLabel>
     </>
   );
 };

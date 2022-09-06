@@ -1,12 +1,7 @@
-
-/** @jsxImportSource @emotion/react */
-
-import { css, useTheme } from '@emotion/react';
-
+import styled from '@emotion/styled';
 import { useEffect } from 'react';
 import { CITIES } from '../../const';
 import { CityCoords } from '../../types/cityCoods';
-import styles from './CitiesList.module.scss';
 
 type CitiesListProps = {
   setGettingCoords: (status: boolean) => void,
@@ -17,6 +12,34 @@ type CitiesListProps = {
   city: CityCoords,
 };
 
+const StyledList = styled.ul`
+  display: flex;
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-right: 20px;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`;
+
+const StyledButton = styled.button`
+  border: none;
+  border-radius: 16px;
+  padding: 10px;
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  color: ${props => props.theme.caption};
+  background-color: ${props => props.theme.textSecondary};
+  opacity: 0.7;
+`;
+
 const CitiesList = ({
     setGettingCoords,
     setCoordsError,
@@ -25,14 +48,6 @@ const CitiesList = ({
     setCity,
     city,
   }: CitiesListProps): JSX.Element => {
-    const theme = useTheme();
-
-    
-    const style = css({
-      color: theme.caption,
-      backgroundColor: theme.textSecondary,
-    });
-
     useEffect(() => {
       const geo = navigator.geolocation;
 
@@ -69,31 +84,27 @@ const CitiesList = ({
   }, [city.lat, setCity, setCoordsError, setGettingCoords, setUserCoords]);
 
   return (
-    <ul className={styles.list}>
+    <StyledList>
       {Object.entries(CITIES).map((item) => (
         <li key={item[0]}>
-          <button
-            className={styles.btn}
-            css={style}
+          <StyledButton
             onClick={() => {
               setCoordsError(false);
               setCity(item[1]);
             }}
           >
             {item[0]}
-          </button>
+          </StyledButton>
         </li>
       ))}
         <li>
-          <button
-            className={styles.btn}
-            css={style}
+          <StyledButton
             onClick={() => setCity(userCoords)}
           >
             User Position
-          </button>
+          </StyledButton>
         </li>
-    </ul>
+    </StyledList>
   );
 };
 
