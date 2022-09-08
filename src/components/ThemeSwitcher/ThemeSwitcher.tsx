@@ -12,8 +12,8 @@ const StyledContainer = styled.div`
   height: 24px;
   display: flex;
   position: fixed;
-  top: 100px;
-  right: 100px;
+  top: 20px;
+  right: 80px;
 `;
 
 const ThemeSwitcher = ({ isDark, changeTheme } : ThemeSwitcherProps): JSX.Element => {

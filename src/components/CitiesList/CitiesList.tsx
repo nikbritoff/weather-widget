@@ -1,15 +1,13 @@
 import styled from '@emotion/styled';
-import { useEffect } from 'react';
 import { CITIES } from '../../const';
-import { CityCoords } from '../../types/cityCoods';
+import { Cities } from '../../types/cities';
+import { LocationCoordinates } from '../../types/locationCoordinates';
 
 type CitiesListProps = {
-  setGettingCoords: (status: boolean) => void,
   setCoordsError: (status: boolean) => void,
-  setUserCoords: (coords: CityCoords) => void,
-  userCoords: CityCoords,
-  setCity: (city: CityCoords) => void,
-  city: CityCoords,
+  setLocation: (coords: LocationCoordinates) => void,
+  setGettingCoords: (status: boolean) => void,
+  currentLocation: LocationCoordinates | null,
 };
 
 const StyledList = styled.ul`
@@ -43,68 +41,48 @@ const StyledButton = styled.button`
 const CitiesList = ({
     setGettingCoords,
     setCoordsError,
-    setUserCoords,
-    userCoords,
-    setCity,
-    city,
+    setLocation,
+    currentLocation,
   }: CitiesListProps): JSX.Element => {
-    useEffect(() => {
-      const geo = navigator.geolocation;
-
-      const onChange: PositionCallback = ({coords: {latitude: lat, longitude: lon}}) => {
-        if (!city.lat) {
-          setCity({lat: String(lat), lon: String(lon)});
-        }
-      
-        setUserCoords({lat: String(lat), lon: String(lon)});
-        setGettingCoords(false);
-      };
-
-      const onError = () => {
-        if (!city.lat) {
-          setCoordsError(true);
-        }
-        
-        setGettingCoords(false);
-      };
-
-      if (!geo) {
-        setGettingCoords(false);
-        setCoordsError(true);
-        return;
-      }
-
-
-    const watcher = geo.watchPosition(
-      onChange,
-      onError
-    );
-    
-    return () => geo.clearWatch(watcher);
-  }, [city.lat, setCity, setCoordsError, setGettingCoords, setUserCoords]);
 
   return (
+    <>
     <StyledList>
       {Object.entries(CITIES).map((item) => (
         <li key={item[0]}>
           <StyledButton
             onClick={() => {
+              setGettingCoords(false);
               setCoordsError(false);
-              setCity(item[1]);
+              setLocation(item[1]);
             }}
           >
             {item[0]}
           </StyledButton>
         </li>
       ))}
-        <li>
-          <StyledButton
-            onClick={() => setCity(userCoords)}
-          >
-            User Position
-          </StyledButton>
-        </li>
     </StyledList>
+    <select
+      defaultValue='default'
+      onChange={(evt) => {
+        const key = evt.target.value as keyof Cities
+
+        setGettingCoords(false);
+        setCoordsError(false);
+        setLocation(CITIES[key]);
+      }
+    }>
+      <option value='default' disabled>Select location</option>
+      {Object.entries(CITIES).map((item: [string, LocationCoordinates]) => (
+          <option
+            key={item[0]}
+            value={item[0]}
+          >
+              {item[0]}
+          </option>
+        ))}
+    </select>
+    </>
   );
 };
 
