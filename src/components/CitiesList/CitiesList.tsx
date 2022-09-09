@@ -1,110 +1,68 @@
 import styled from '@emotion/styled';
-import { useEffect } from 'react';
 import { CITIES } from '../../const';
-import { CityCoords } from '../../types/cityCoods';
+import { Cities } from '../../types/cities';
+import { LocationCoordinates } from '../../types/locationCoordinates';
 
 type CitiesListProps = {
-  setGettingCoords: (status: boolean) => void,
   setCoordsError: (status: boolean) => void,
-  setUserCoords: (coords: CityCoords) => void,
-  userCoords: CityCoords,
-  setCity: (city: CityCoords) => void,
-  city: CityCoords,
+  setLocation: (coords: LocationCoordinates) => void,
+  setGettingCoords: (status: boolean) => void,
+  currentLocation: LocationCoordinates | null,
 };
 
-const StyledList = styled.ul`
-  display: flex;
-  list-style: none;
-  padding: 0;
-
-  li {
-    margin-right: 20px;
-    
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-`;
-
-const StyledButton = styled.button`
-  border: none;
-  border-radius: 16px;
-  padding: 10px;
-  cursor: pointer;
-
+const StyledSelect = styled.select`
+  margin-top: 20px;
   font-weight: 700;
   font-size: 15px;
   line-height: 20px;
-  color: ${props => props.theme.caption};
-  background-color: ${props => props.theme.textSecondary};
+  color: ${props => props.theme.textPrimary};
   opacity: 0.7;
+  padding: 10px 30px;
+  border-radius: 16px;
+  border: 1px solid ${props => props.theme.shadow};
+  box-shadow: 0px 8px 16px ${props => props.theme.shadow};
+  background-color: ${props => props.theme.bg};
+
+  & option {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  `;
+  
+  const StyledOption = styled.option`
+  color: ${props => props.theme.textPrimary};
+  background-color: ${props => props.theme.bg};
 `;
 
 const CitiesList = ({
     setGettingCoords,
     setCoordsError,
-    setUserCoords,
-    userCoords,
-    setCity,
-    city,
+    setLocation,
   }: CitiesListProps): JSX.Element => {
-    useEffect(() => {
-      const geo = navigator.geolocation;
-
-      const onChange: PositionCallback = ({coords: {latitude: lat, longitude: lon}}) => {
-        if (!city.lat) {
-          setCity({lat: String(lat), lon: String(lon)});
-        }
-      
-        setUserCoords({lat: String(lat), lon: String(lon)});
-        setGettingCoords(false);
-      };
-
-      const onError = () => {
-        if (!city.lat) {
-          setCoordsError(true);
-        }
-        
-        setGettingCoords(false);
-      };
-
-      if (!geo) {
-        setGettingCoords(false);
-        setCoordsError(true);
-        return;
-      }
-
-
-    const watcher = geo.watchPosition(
-      onChange,
-      onError
-    );
-    
-    return () => geo.clearWatch(watcher);
-  }, [city.lat, setCity, setCoordsError, setGettingCoords, setUserCoords]);
 
   return (
-    <StyledList>
-      {Object.entries(CITIES).map((item) => (
-        <li key={item[0]}>
-          <StyledButton
-            onClick={() => {
-              setCoordsError(false);
-              setCity(item[1]);
-            }}
+    <>
+    <StyledSelect
+      defaultValue='default'
+      onChange={(evt) => {
+        const key = evt.target.value as keyof Cities
+
+        setGettingCoords(false);
+        setCoordsError(false);
+        setLocation(CITIES[key]);
+      }
+    }>
+      <option value='default' disabled>Select location</option>
+      {Object.entries(CITIES).map((item: [string, LocationCoordinates]) => (
+          <StyledOption
+            key={item[0]}
+            value={item[0]}
           >
-            {item[0]}
-          </StyledButton>
-        </li>
-      ))}
-        <li>
-          <StyledButton
-            onClick={() => setCity(userCoords)}
-          >
-            User Position
-          </StyledButton>
-        </li>
-    </StyledList>
+              {item[0]}
+          </StyledOption>
+        ))}
+    </StyledSelect>
+    </>
   );
 };
 

@@ -6,28 +6,6 @@ type ToggleProps = {
   changeAction: () => void;
 };
 
-const StyledLabel = styled.label`
-  display: block;
-  position: relative;
-  width: 44px;
-  height: 24px;
-  background-color: ${props => props.theme.textSecondary};
-  border-radius: 50px;
-  cursor: pointer;
-
-  &::before {
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    content: '';
-    display: block;
-    width: 16px;
-    height: 16px;
-    background-color: ${props => props.theme.caption};
-    border-radius: 50%;
-  }
-`;
-
 const StyledInput = styled.input`
   &:checked + label::before {
     left: auto;
@@ -36,11 +14,33 @@ const StyledInput = styled.input`
 `;
 
 const Toggle = ({ name, isActive, changeAction }: ToggleProps): JSX.Element => {
+  const StyledLabel = styled.label`
+    display: block;
+    position: relative;
+    width: 44px;
+    height: 24px;
+    
+    background-color: ${props => isActive ? props.theme.accent: props.theme.textSecondary};
+    border-radius: 50px;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      content: '';
+      display: block;
+      width: 16px;
+      height: 16px;
+      background-color: ${props => props.theme.caption};
+      border-radius: 50%;
+    }
+  `;
   return (
     <>
       <StyledInput
-        className={'visuallyHidden'}
-        type="checkbox"
+        className='visuallyHidden'
+        type='checkbox'
         name={name}
         id={name}
         checked={isActive}

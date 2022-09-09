@@ -1,43 +1,24 @@
-import styled from '@emotion/styled';
-import { useState } from 'react';
-import { CityCoords } from '../../types/cityCoods';
-import Card from '../Card/Card';
-import CitiesList from '../CitiesList/CitiesList';
-import { ThemeProvider } from '@emotion/react';
-import { useChangeTheme } from '../../hooks/useChangeTheme';
-import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
-
-const StyledDiv = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme.bg};
-`;
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import WorldWeather from '../../pages/WorldWeather/WorldWeather';
+import MyLocation from '../../pages/MyLocation/MyLocation';
+import Settings from '../../pages/Settings/Settings';
+import NotFound from '../../pages/NotFound/NotFound';
+import MainLayout from '../../layouts/MainLayout/MainLayout';
 
 const App = ():JSX.Element => {
-  const [city, setCity] = useState({} as CityCoords);
-  const [userCoords, setUserCoords] = useState({} as CityCoords);
-  const [gettingCoords, setGettingCoords] = useState(true);
-  const [coordsError, setCoordsError] = useState(false);
-  const { isDark, currentTheme: theme, changeTheme } = useChangeTheme();
-
   return (
-    <ThemeProvider theme={theme}>
-      <StyledDiv>
-        <CitiesList 
-          setGettingCoords={setGettingCoords}
-          setCoordsError={setCoordsError}
-          setCity={setCity}
-          setUserCoords={setUserCoords}
-          userCoords={userCoords}
-          city={city}
-        />
-        <Card city={city} gettingCoords={gettingCoords} coordsError={coordsError}/>
-        <ThemeSwitcher changeTheme={changeTheme} isDark={isDark}/>
-      </StyledDiv>
-    </ThemeProvider>
+    <BrowserRouter>
+      <MainLayout>
+        <Routes>
+          <Route path={AppRoute.Index} element={<Navigate to={AppRoute.WorldWeather}/>} />
+            <Route path={AppRoute.WorldWeather} element={<WorldWeather/>} />
+            <Route path={AppRoute.MyLocation} element={<MyLocation/>} />
+            <Route path={AppRoute.Settings} element={<Settings/>} />
+            <Route path={AppRoute.Other || AppRoute.NotFound} element={<NotFound/>} />
+        </Routes>
+      </MainLayout>
+    </BrowserRouter>
   );
 };
 

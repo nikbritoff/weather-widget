@@ -12,8 +12,8 @@ const StyledContainer = styled.div`
   height: 24px;
   display: flex;
   position: fixed;
-  top: 100px;
-  right: 100px;
+  top: 28px;
+  right: 80px;
 `;
 
 const ThemeSwitcher = ({ isDark, changeTheme } : ThemeSwitcherProps): JSX.Element => {
@@ -23,7 +23,7 @@ const ThemeSwitcher = ({ isDark, changeTheme } : ThemeSwitcherProps): JSX.Elemen
   border-radius: 50%;
   border-style: none;
   margin-right: 5px;
-  background-color: ${props => props.theme.textSecondary};
+  background-color: ${props => isDark ? props.theme.accent : props.theme.textSecondary};
   display: flex;
   justify-content: center;
   align-items: center;
