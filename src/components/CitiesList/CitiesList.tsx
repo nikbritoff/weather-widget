@@ -21,6 +21,7 @@ const StyledSelect = styled.select`
   border-radius: 16px;
   border: 1px solid ${props => props.theme.shadow};
   box-shadow: 0px 8px 16px ${props => props.theme.shadow};
+  background-color: ${props => props.theme.bg};
 
   & option {
     font-size: 15px;

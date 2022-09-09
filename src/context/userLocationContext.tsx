@@ -44,6 +44,7 @@ export const LocationContextProvider: React.FC<LocationContextProviderProps> = (
   };
 
   useEffect(() => {
+    console.log('ff');
     if (!autoDetection && !gettingCoords) {
     return;
     }

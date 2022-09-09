@@ -30,6 +30,11 @@ const Settings = (): JSX.Element => {
     userLocation,
   } = useUserLocationContext();
 
+  const toggleAutoDetection = () => {
+    changeAutoDetection(!autoDetection);
+    setGettingCoords(true);
+  };
+
   return (
     <>
       <Caption>Settings</Caption>
@@ -41,13 +46,14 @@ const Settings = (): JSX.Element => {
           type='checkbox'
           checked={autoDetection}
           className='visuallyHidden'
-          onChange={() => {
-            changeAutoDetection(!autoDetection);
-            setGettingCoords(true);
-          }}
+          onChange={toggleAutoDetection}
           />
       </StyledLabel>
-      <Toggle name='auto-detection' isActive={autoDetection} changeAction={() => changeAutoDetection(!autoDetection)}></Toggle>
+      <Toggle
+        name='auto-detection'
+        isActive={autoDetection}
+        changeAction={toggleAutoDetection}
+      ></Toggle>
       </Container>
       {!autoDetection &&
         <CitiesList 
