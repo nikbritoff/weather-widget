@@ -10,59 +10,38 @@ type CitiesListProps = {
   currentLocation: LocationCoordinates | null,
 };
 
-const StyledList = styled.ul`
-  display: flex;
-  list-style: none;
-  padding: 0;
-
-  li {
-    margin-right: 20px;
-    
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-`;
-
-const StyledButton = styled.button`
-  border: none;
-  border-radius: 16px;
-  padding: 10px;
-  cursor: pointer;
-
+const StyledSelect = styled.select`
+  margin-top: 20px;
   font-weight: 700;
   font-size: 15px;
   line-height: 20px;
-  color: ${props => props.theme.caption};
-  background-color: ${props => props.theme.textSecondary};
+  color: ${props => props.theme.textPrimary};
   opacity: 0.7;
+  padding: 10px 30px;
+  border-radius: 16px;
+  border: 1px solid ${props => props.theme.shadow};
+  box-shadow: 0px 8px 16px ${props => props.theme.shadow};
+
+  & option {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  `;
+  
+  const StyledOption = styled.option`
+  color: ${props => props.theme.textPrimary};
+  background-color: ${props => props.theme.bg};
 `;
 
 const CitiesList = ({
     setGettingCoords,
     setCoordsError,
     setLocation,
-    currentLocation,
   }: CitiesListProps): JSX.Element => {
 
   return (
     <>
-    <StyledList>
-      {Object.entries(CITIES).map((item) => (
-        <li key={item[0]}>
-          <StyledButton
-            onClick={() => {
-              setGettingCoords(false);
-              setCoordsError(false);
-              setLocation(item[1]);
-            }}
-          >
-            {item[0]}
-          </StyledButton>
-        </li>
-      ))}
-    </StyledList>
-    <select
+    <StyledSelect
       defaultValue='default'
       onChange={(evt) => {
         const key = evt.target.value as keyof Cities
@@ -74,14 +53,14 @@ const CitiesList = ({
     }>
       <option value='default' disabled>Select location</option>
       {Object.entries(CITIES).map((item: [string, LocationCoordinates]) => (
-          <option
+          <StyledOption
             key={item[0]}
             value={item[0]}
           >
               {item[0]}
-          </option>
+          </StyledOption>
         ))}
-    </select>
+    </StyledSelect>
     </>
   );
 };

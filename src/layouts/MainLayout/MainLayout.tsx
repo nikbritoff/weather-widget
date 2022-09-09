@@ -7,16 +7,17 @@ import { useChangeTheme } from '../../hooks/useChangeTheme';
 
 const StyledPageContainer = styled.div`
   height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr;
+  display: flex;
+  flex-direction: column;
   background-color: ${props => props.theme.bg};
 `;
 
 const StyledContent = styled.div`
+  padding-top: 180px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 `;
 
 type MainLayoutProps = {

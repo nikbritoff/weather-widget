@@ -8,6 +8,7 @@ const light = {
   caption: '#ffffff',
   textPrimary: '#191919',
   textSecondary: '#6B6B6B',
+  accent: '#ff6d00',
 };
 
 const dark = {
@@ -16,6 +17,7 @@ const dark = {
   caption: '#000000',
   textPrimary: '#e6e6e6',
   textSecondary: '#949494',
+  accent: '#ff6d00',
 };
 
 export const useChangeTheme = () => {

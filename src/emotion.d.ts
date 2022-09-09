@@ -7,6 +7,7 @@ declare module '@emotion/react' {
     caption: string,
     textPrimary: string,
     textSecondary: string,
+    accent: string,
   }
 }
 

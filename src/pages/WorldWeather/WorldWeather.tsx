@@ -1,6 +1,7 @@
 import Card from '../../components/Card/Card';
 import CitiesList from '../../components/CitiesList/CitiesList';
 import { useUserLocationContext } from '../../context/userLocationContext';
+import Caption from '../../shared/Caption/Caption';
 
 const WorldWeather = (): JSX.Element => {
   const {
@@ -12,7 +13,7 @@ const WorldWeather = (): JSX.Element => {
 
   return (
     <>
-      <h2>World weather</h2>    
+      <Caption>World weather</Caption>    
       <Card location={worldLocation} coordsError={false}/>
       <CitiesList 
         setLocation={setWorldLocation}
