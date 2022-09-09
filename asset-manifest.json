@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/weather-widget/static/css/main.5a0d86d1.css",
+    "main.js": "/weather-widget/static/js/main.225b2156.js",
+    "static/media/spb.jpg": "/weather-widget/static/media/spb.1cdfd10ca615ab32d8a2.jpg",
+    "static/media/OpenSans-SemiBold.woff": "/weather-widget/static/media/OpenSans-SemiBold.ad9bc43d5d0309e8bd2e.woff",
+    "static/media/OpenSans-Bold.woff": "/weather-widget/static/media/OpenSans-Bold.eb8f357f58267539eb7b.woff",
+    "static/media/OpenSans-SemiBold.woff2": "/weather-widget/static/media/OpenSans-SemiBold.a7e5d5e944cf5e03d5d6.woff2",
+    "static/media/OpenSans-Bold.woff2": "/weather-widget/static/media/OpenSans-Bold.f3e79b3d83d8a599df08.woff2",
+    "static/media/eye-open.svg": "/weather-widget/static/media/eye-open.f9fe6a24375052843c15711a69de24ae.svg",
+    "static/media/eye-close.svg": "/weather-widget/static/media/eye-close.3805d531c1e85e92b493f1d88c34b074.svg",
+    "index.html": "/weather-widget/index.html",
+    "main.5a0d86d1.css.map": "/weather-widget/static/css/main.5a0d86d1.css.map",
+    "main.225b2156.js.map": "/weather-widget/static/js/main.225b2156.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a0d86d1.css",
+    "static/js/main.225b2156.js"
+  ]
+}
