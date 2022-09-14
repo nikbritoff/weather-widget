@@ -1,8 +1,7 @@
 import Card from '../../features/Card/Card';
 import CitiesList from '../../features/CitiesList/CitiesList';
 import { useUserLocationContext } from '../../features/UserLocation/userLocation.hook';
-// import { useUserLocationContext } from '../../context/userLocationContext';
-import Caption from '../../shared/Caption/Caption';
+import Caption from '../../shared/components/Caption/Caption';
 
 const WorldWeather = (): JSX.Element => {
   const {

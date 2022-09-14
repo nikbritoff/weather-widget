@@ -1,13 +1,13 @@
-import styled from '@emotion/styled';
 import MockImage from '../../shared/assets/images/spb.jpg'
 import Description from './Description/Description';
 import { useEffect, useState } from 'react';
 import { WeaterData } from '../../shared/types/api';
-import Loading from '../../shared/Loading/Loading';
-import Error from '../../shared/Error/Error';
+import Loading from '../../shared/components/Loading/Loading';
+import Error from '../../shared/components/Error/Error';
 import Info from './Info/Info';
 import { LocationCoordinates } from '../../shared/types/locationCoordinates';
 import { requestCurrentWeather } from '../../api/fetchCurrentWeather';
+import { StyledCard, StyledImage, StyledImageContainer } from './card.style';
 
 type CardProps = {
   location: LocationCoordinates | null,
@@ -19,26 +19,6 @@ type CardState =
   | { status: 'loading' }
   | { status: 'success', data: WeaterData }
   | { status: 'idle' };
-
-const StyledCard = styled.div`
-  width: 243px;
-  height: 332px;
-  border-radius: 16px;
-  overflow: hidden;
-  background-color: ${props => props.theme.bg};
-  box-shadow: 0px 8px 16px ${props => props.theme.shadow};
-`;
-
-const StyledImageContainer = styled.div`
-  position: relative;
-  height: 239px;
-`;
-
-const StyledImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
 
 const CardError = ({ message }: { message : string }): JSX.Element => {
   return (

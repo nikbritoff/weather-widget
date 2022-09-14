@@ -14,7 +14,6 @@ export const checkLocalStorage = (key: LocalStorageKey, init: any) => {
 };
 
 export const setItemInLocalStorage = (key: LocalStorageKey, value: any): void => {
-  console.log(key, value);
   const appInfo = localStorage.getItem('appInfo');
   const storage = appInfo ? JSON.parse(appInfo) : {};
   localStorage.setItem('appInfo', JSON.stringify({...storage, [key]: value}));

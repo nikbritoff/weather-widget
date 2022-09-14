@@ -1,9 +1,8 @@
 import CitiesList from '../../features/CitiesList/CitiesList';
-import { Container, StyledLabel } from '../../features/Settings/settings.styles';
+import { Container, StyledLabel } from '../../features/Settings/settings.style';
 import { useUserLocationContext } from '../../features/UserLocation/userLocation.hook';
-// import { useUserLocationContext } from '../../context/userLocationContext';
-import Caption from '../../shared/Caption/Caption';
-import Toggle from '../../shared/Toggle/Toggle';
+import Caption from '../../shared/components/Caption/Caption';
+import Toggle from '../../shared/components/Toggle/Toggle';
 
 const Settings = (): JSX.Element => {
   const {

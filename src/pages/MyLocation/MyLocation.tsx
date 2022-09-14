@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import Card from '../../features/Card/Card';
 import { AppRoute } from '../../features/AppRouter/appRouter.constants';
 import { useUserLocationContext } from '../../features/UserLocation/userLocation.hook';
-// import { useUserLocationContext } from '../../context/userLocationContext';
-import Caption from '../../shared/Caption/Caption';
-import DefaultText from '../../shared/DefaultText/DefaultText';
+import Caption from '../../shared/components/Caption/Caption';
+import DefaultText from '../../shared/components/DefaultText/DefaultText';
 
 interface StyledComponentLinkProps {
   className?: string;

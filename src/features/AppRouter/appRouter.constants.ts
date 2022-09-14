@@ -2,7 +2,7 @@ export enum AppRoute {
   Index = '/',
   Other = '*',
   MyLocation = 'my-location',
-  WorldWeather = 'world-weather',
+  WorldWeather = '/',
   Settings = 'settings',
   NotFound = '404',
 };
