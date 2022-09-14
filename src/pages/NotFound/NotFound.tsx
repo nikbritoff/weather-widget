@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute } from '../../features/AppRouter/appRouter.constants';
 
 const NotFound = (): JSX.Element => {
   return (

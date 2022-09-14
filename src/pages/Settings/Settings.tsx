@@ -1,24 +1,9 @@
-import styled from '@emotion/styled';
-import CitiesList from '../../components/CitiesList/CitiesList';
-import { useUserLocationContext } from '../../context/userLocationContext';
+import CitiesList from '../../features/CitiesList/CitiesList';
+import { Container, StyledLabel } from '../../features/Settings/settings.styles';
+import { useUserLocationContext } from '../../features/UserLocation/userLocation.hook';
+// import { useUserLocationContext } from '../../context/userLocationContext';
 import Caption from '../../shared/Caption/Caption';
 import Toggle from '../../shared/Toggle/Toggle';
-
-const StyledLabel = styled.label`
-padding: 0 20px;
-cursor: pointer;
-user-select: none;
-font-weight: 700;
-font-size: 18px;
-line-height: 20px;
-color: ${props => props.theme.textPrimary};
-opacity: 0.7;
-`;
-
-const Container = styled.div`
-  display: flex;
-`;
-
 
 const Settings = (): JSX.Element => {
   const {
@@ -53,7 +38,7 @@ const Settings = (): JSX.Element => {
         name='auto-detection'
         isActive={autoDetection}
         changeAction={toggleAutoDetection}
-      ></Toggle>
+      />
       </Container>
       {!autoDetection &&
         <CitiesList 

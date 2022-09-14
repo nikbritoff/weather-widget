@@ -7,20 +7,25 @@ type ToggleProps = {
 };
 
 const StyledInput = styled.input`
+  &+ label {
+    background-color: ${props => props.theme.textSecondary};
+  }
+
+  &:checked + label {
+    background-color: ${props => props.theme.accent};
+  }
+
   &:checked + label::before {
     left: auto;
     right: 4px;
   }
 `;
 
-const Toggle = ({ name, isActive, changeAction }: ToggleProps): JSX.Element => {
-  const StyledLabel = styled.label`
+const StyledLabel = styled.label`
     display: block;
     position: relative;
     width: 44px;
     height: 24px;
-    
-    background-color: ${props => isActive ? props.theme.accent: props.theme.textSecondary};
     border-radius: 50px;
     cursor: pointer;
 
@@ -36,6 +41,8 @@ const Toggle = ({ name, isActive, changeAction }: ToggleProps): JSX.Element => {
       border-radius: 50%;
     }
   `;
+
+const Toggle = ({ name, isActive, changeAction }: ToggleProps): JSX.Element => {
   return (
     <>
       <StyledInput
