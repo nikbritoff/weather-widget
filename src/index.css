@@ -18,19 +18,19 @@ body {
   box-sizing: border-box;
 }
 
-.visuallyHidden {
+/* .visuallyHidden {
   position: absolute;
   width: 1px;
   height: 1px;
   margin: -1px;
   padding: 0;
   clip: rect(0 0 0 0);
-}
+} */
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('./styles/fonts/OpenSans-Bold.woff2') format('woff2'),
-      url('./styles/fonts/OpenSans-Bold.woff') format('woff');
+  src: url('./shared/assets/fonts/OpenSans-Bold.woff2') format('woff2'),
+      url('./shared/assets/fonts/OpenSans-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -38,8 +38,8 @@ body {
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('./styles/fonts/OpenSans-SemiBold.woff2') format('woff2'),
-      url('./styles/fonts/OpenSans-SemiBold.woff') format('woff');
+  src: url('./shared/assets/fonts/OpenSans-SemiBold.woff2') format('woff2'),
+      url('./shared/assets/fonts/OpenSans-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;

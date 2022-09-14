@@ -1,4 +1,4 @@
-import { WeaterData } from '../types/api';
+import { WeaterData } from '../shared/types/api';
 import { wheatherApi } from './weatherApi';
 
 const API_KEY = process.env.REACT_APP_API_KEY;

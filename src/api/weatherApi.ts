@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { WeaterData } from '../types/api';
+import { WeaterData } from '../shared/types/api';
 
 const BACKEND_URL = 'https://api.openweathermap.org/data/2.5';
 
