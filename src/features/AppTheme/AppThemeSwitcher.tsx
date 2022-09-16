@@ -1,9 +1,9 @@
 import Toggle from '../../shared/components/Toggle/Toggle';
 import { useTheme } from '@emotion/react';
-import { StyledContainer, StyledButton } from './themeSwitcher.style';
-import { useChangeTheme } from './theme.useChangeTheme';
+import { StyledContainer, StyledButton, StyledButtonText } from './appThemeSwitcher.style';
+import { useChangeTheme } from './useChangeTheme';
 
-const ThemeSwitcher = (): JSX.Element => {
+const AppThemeSwitcher = (): JSX.Element => {
   const { changeTheme } = useChangeTheme();
   const theme = useTheme();
 
@@ -17,7 +17,7 @@ const ThemeSwitcher = (): JSX.Element => {
       <StyledButton
         onClick={handleChangeClick}
       >
-        <span className="visuallyHidden">Change theme</span>
+        <StyledButtonText>Change theme</StyledButtonText>
       </StyledButton>
       <Toggle
         name="theme-switcher"
@@ -28,4 +28,4 @@ const ThemeSwitcher = (): JSX.Element => {
   );
 };
 
-export default ThemeSwitcher;
+export default AppThemeSwitcher;

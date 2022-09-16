@@ -1,5 +1,5 @@
 import CitiesList from '../../features/CitiesList/CitiesList';
-import { Container, StyledLabel } from '../../features/Settings/settings.style';
+import { Container, StyledInput, StyledLabel } from '../../features/Settings/settings.style';
 import { useUserLocationContext } from '../../features/UserLocation/userLocation.hook';
 import Caption from '../../shared/components/Caption/Caption';
 import Toggle from '../../shared/components/Toggle/Toggle';
@@ -22,23 +22,24 @@ const Settings = (): JSX.Element => {
   return (
     <>
       <Caption>Settings</Caption>
-      <Container>
 
+      <Container>
       <StyledLabel>
         My location: Auto detected
-        <input
+        <StyledInput
           type='checkbox'
           checked={autoDetection}
-          className='visuallyHidden'
           onChange={toggleAutoDetection}
-          />
+        />
       </StyledLabel>
+
       <Toggle
         name='auto-detection'
         isActive={autoDetection}
         changeAction={toggleAutoDetection}
       />
       </Container>
+
       {!autoDetection &&
         <CitiesList 
           setLocation={setUserLocation}

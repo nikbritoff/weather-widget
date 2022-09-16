@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { LocalStorageKey } from '../../shared/constants';
-import { checkLocalStorage, setItemInLocalStorage } from '../../shared/utils/localStorage';
+import { getAppInfoItemInStorage, setAppInfoItemInStorage } from '../../shared/utils/storage';
 
 const themeLight = {
   shadow: 'rgba(0, 0, 0, 0.25)',
@@ -23,14 +23,14 @@ const themeDark = {
 };
 
 export const useChangeTheme = () => {
-  const [isDark, setIsDark] = useState(checkLocalStorage(LocalStorageKey.DarkTheme, false));
+  const [isDark, setIsDark] = useState(getAppInfoItemInStorage(LocalStorageKey.DarkTheme, false));
   const [currentTheme, setCurrentTheme] = useState(isDark ? themeDark : themeLight);
   
   const changeTheme = () => {
-    setItemInLocalStorage(LocalStorageKey.DarkTheme, !isDark);
+    setAppInfoItemInStorage(LocalStorageKey.DarkTheme, !isDark);
     setCurrentTheme(isDark ? themeLight : themeDark);
     setIsDark(!isDark);
   };
   
-  return { changeTheme, currentTheme};
+  return { changeTheme, currentTheme };
 };

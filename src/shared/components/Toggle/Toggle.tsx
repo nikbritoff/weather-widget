@@ -10,12 +10,12 @@ const Toggle = ({ name, isActive, changeAction }: ToggleProps): JSX.Element => {
   return (
     <>
       <StyledInput
-        className='visuallyHidden'
         type='checkbox'
         name={name}
         id={name}
         checked={isActive}
         onChange={changeAction}
+        hidden
       />
       <StyledLabel htmlFor={name}></StyledLabel>
     </>

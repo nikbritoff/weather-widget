@@ -3,7 +3,7 @@ import { CITIES } from '../CitiesList/citiesList.mock';
 import { LocalStorageKey } from '../../shared/constants';
 import { LocationCoordinates } from '../../shared/types/locationCoordinates';
 import { userLocationContext } from './userLocation.context';
-import { checkLocalStorage, setItemInLocalStorage } from './userLocation.utils';
+import { getAppInfoItemInStorage, setAppInfoItemInStorage } from '../../shared/utils/storage';
 
 type UserLocationContextProviderProps = {
   children: React.ReactNode,
@@ -19,7 +19,7 @@ const initialState = {
 
 export const UserLocationProvider: React.FC<UserLocationContextProviderProps> = (
   { children }: UserLocationContextProviderProps) => {
-  const [ autoDetection, setAutoDetection ] = useState<boolean>(checkLocalStorage(
+  const [ autoDetection, setAutoDetection ] = useState<boolean>(getAppInfoItemInStorage(
     LocalStorageKey.AutoDetection, initialState.autoDetection));
   const [ userLocation, setUserLocation ] = useState<null | LocationCoordinates>(initialState.userLocation);
   const [ gettingCoords, setGettingCoords ] = useState<boolean>(initialState.gettingCoords);
@@ -28,7 +28,7 @@ export const UserLocationProvider: React.FC<UserLocationContextProviderProps> = 
 
   const changeAutoDetection = (status: boolean) => {
     setAutoDetection(status);
-    setItemInLocalStorage(LocalStorageKey.AutoDetection, status);
+    setAppInfoItemInStorage(LocalStorageKey.AutoDetection, status);
   };
 
   useEffect(() => {

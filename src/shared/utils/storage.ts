@@ -1,7 +1,7 @@
 import { LocalStorageKey } from '../constants';
 
 
-export const checkLocalStorage = (key: LocalStorageKey, init: any) => {
+export const getAppInfoItemInStorage = (key: LocalStorageKey, init: any) => {
   const appInfo = localStorage.getItem('appInfo');
     
     if (appInfo) {
@@ -13,7 +13,7 @@ export const checkLocalStorage = (key: LocalStorageKey, init: any) => {
   return init;
 };
 
-export const setItemInLocalStorage = (key: LocalStorageKey, value: any): void => {
+export const setAppInfoItemInStorage = (key: LocalStorageKey, value: any): void => {
   const appInfo = localStorage.getItem('appInfo');
   const storage = appInfo ? JSON.parse(appInfo) : {};
   localStorage.setItem('appInfo', JSON.stringify({...storage, [key]: value}));
