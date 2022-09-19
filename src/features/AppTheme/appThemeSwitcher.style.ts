@@ -15,7 +15,7 @@ export const StyledButton = styled.button`
   border-radius: 50%;
   border-style: none;
   margin-right: 5px;
-  background-color: ${props => props.theme.isDark ? props.theme.accent : props.theme.textSecondary};
+  background-color: ${props => props.theme.isDark ? 'var(--colors-accent)' : 'var(--colors-textSecondary)'};
   display: flex;
   justify-content: center;
   align-items: center;

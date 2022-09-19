@@ -11,11 +11,11 @@ ${props => props.hidden
   : ''
 }
 & + label {
-  background-color: ${props => props.theme.textSecondary};
+  background-color: var(--colors-textSecondary);
 }
 
 &:checked + label {
-  background-color: ${props => props.theme.accent};
+  background-color: var(--colors-accent);
 }
 
 &:checked + label::before {
@@ -40,7 +40,7 @@ export const StyledLabel = styled.label`
       display: block;
       width: 16px;
       height: 16px;
-      background-color: ${props => props.theme.caption};
+      background-color: var(--colors-caption);
       border-radius: 50%;
     }
   `;

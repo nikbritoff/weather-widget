@@ -4,7 +4,7 @@ export const StyledPageContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: ${props => props.theme.bg};
+  background-color: var(--colors-bg);
 `;
 
 export const StyledContent = styled.div`

@@ -10,7 +10,7 @@ export const StyledLabel = styled.label`
   font-size: 18px;
   font-weight: 700;
   line-height: 20px;
-  color: ${props => props.theme.textPrimary};
+  color: var(--colors-textPrimary);
   opacity: 0.7;
 
   ${StyledInput} {

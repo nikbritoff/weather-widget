@@ -8,7 +8,7 @@ const StyledCaption = styled.h2`
   font-weight: 700;
   font-size: 22px;
   line-height: 20px;
-  color: ${props => props.theme.textPrimary};
+  color: var(--colors-textPrimary);
   opacity: 0.9;
   padding: 25px 20px;
   margin: 0;

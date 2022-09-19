@@ -21,8 +21,8 @@ export const StyledTemp = styled.p`
   font-size: 40px;
   line-height: 24px;
   letter-spacing: -0.02em;
-  text-shadow: 0px 4px 4px ${props => props.theme.shadow};
-  color: ${props => props.theme.caption};
+  text-shadow: 0px 4px 4px var(--colors-shadow);
+  color: var(--colors-caption);
   margin: 0;
   padding: 0;
 `;
@@ -32,7 +32,7 @@ export const StyledCity = styled.p`
   font-size: 15px;
   line-height: 20px;
   letter-spacing: 1px;
-  color: ${props => props.theme.caption};
+  color: var(--colors-caption);
   text-transform: uppercase;
   margin: 0;
   margin-top: 15px;

@@ -1,13 +1,9 @@
 import '@emotion/react'
+import { ThemeVariant } from './features/AppTheme/appTheme.constants';
 
 declare module '@emotion/react' {
   export interface Theme {
-    shadow: string,
-    bg: string,
-    caption: string,
-    textPrimary: string,
-    textSecondary: string,
-    accent: string,
+    themeVariant: ThemeVariant,
     isDark: boolean,
   }
 }

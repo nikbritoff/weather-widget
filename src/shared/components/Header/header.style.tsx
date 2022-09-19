@@ -25,14 +25,14 @@ export const StyledLink = styled(StyledComponentLink)<StyledComponentLinkProps>`
   font-weight: 700;
   font-size: 20px;
   line-height: 20px;
-  color: ${props => props.theme.textPrimary};
+  color: var(--colors-textPrimary);
   opacity: 0.7;
 
-  border-bottom: 2px solid ${props => props.theme.accent};
+  border-bottom: 2px solid var(--colors-accent);
   ${props => props.active ? `` : `border-bottom: none`};
   
   &:hover {
-    color: ${props => props.theme.accent};
+    color: var(--colors-accent);
     opacity: 1;
   }
 `;

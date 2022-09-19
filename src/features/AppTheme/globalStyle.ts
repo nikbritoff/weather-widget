@@ -1,6 +1,41 @@
 import { css } from '@emotion/react/macro';
+import { ThemeVariant } from './appTheme.constants';
 
-export const globalStyle = css`
+const themeLight = {
+  shadow: 'rgba(0, 0, 0, 0.25)',
+  bg: '#ffffff',
+  caption: '#ffffff',
+  textPrimary: '#191919',
+  textSecondary: '#6B6B6B',
+  accent: '#ff6d00',
+  isDark: false,
+};
+
+const themeDark = {
+  shadow: 'rgba(255, 255, 255, 0.25)',
+  bg: '#000000',
+  caption: '#000000',
+  textPrimary: '#e6e6e6',
+  textSecondary: '#949494',
+  accent: '#ff6d00',
+  isDark: true,
+};
+
+export const appTheme = {
+  light: themeLight,
+  dark: themeDark,
+};
+
+export const getRebootCSS = (themeVariat : ThemeVariant) => css`
+  :root {
+    --colors-shadow: ${appTheme[themeVariat].shadow};
+    --colors-bg: ${appTheme[themeVariat].bg};
+    --colors-caption: ${appTheme[themeVariat].caption};
+    --colors-textPrimary: ${appTheme[themeVariat].textPrimary};
+    --colors-textSecondary: ${appTheme[themeVariat].textSecondary};
+    --colors-accent: ${appTheme[themeVariat].accent};
+  }
+
   html {
     height: 100%;
   }

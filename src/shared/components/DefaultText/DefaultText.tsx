@@ -14,7 +14,7 @@ cursor: pointer;
 font-weight: 700;
 font-size: 18px;
 line-height: 20px;
-color: ${props => props.theme.textPrimary};
+color: var(--colors-textPrimary);
 opacity: 0.7;
 `;
 

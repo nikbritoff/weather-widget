@@ -1,6 +1,7 @@
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import BarLoader from 'react-spinners/BarLoader';
+import { appTheme } from '../../../features/AppTheme/globalStyle';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ const Loading = (): JSX.Element => {
 
   return (
     <StyledContainer>
-      <BarLoader color={theme.textPrimary} />
+      <BarLoader color={appTheme[theme.themeVariant].textPrimary} />
     </StyledContainer>
   );
 }

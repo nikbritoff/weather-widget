@@ -5,8 +5,8 @@ export const StyledCard = styled.div`
   height: 332px;
   border-radius: 16px;
   overflow: hidden;
-  background-color: ${props => props.theme.bg};
-  box-shadow: 0px 8px 16px ${props => props.theme.shadow};
+  background-color: var(--colors-bg);
+  box-shadow: 0px 8px 16px var(--colors-shadow);
 `;
 
 export const StyledImageContainer = styled.div`
