@@ -6,12 +6,16 @@ type locationContextType = {
   changeAutoDetection: (value: boolean) => void,
   userLocation: null | LocationCoordinates,
   setUserLocation: (value: LocationCoordinates | null) => void,
+  userLocationName: string,
+  setUserLocationName: (name: string) => void,
   gettingCoords: boolean,
   setGettingCoords: (value: boolean) => void,
   coordsError: boolean,
   setCoordsError: (value: boolean) => void,
   worldLocation: LocationCoordinates,
   setWorldLocation: (value: LocationCoordinates) => void,
+  worldLocationName: string,
+  setWorldLocationName: (name: string) => void,
 };
 
 export const userLocationContext = createContext<locationContextType>({} as locationContextType);

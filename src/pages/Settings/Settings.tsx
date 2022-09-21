@@ -11,7 +11,8 @@ const Settings = (): JSX.Element => {
     setUserLocation,
     setGettingCoords,
     setCoordsError,
-    userLocation,
+    userLocationName,
+    setUserLocationName,
   } = useUserLocationContext();
 
   const toggleAutoDetection = () => {
@@ -41,11 +42,12 @@ const Settings = (): JSX.Element => {
       </Container>
 
       {!autoDetection &&
-        <CitiesList 
+        <CitiesList
+          locationName={userLocationName}
+          setLocationName={setUserLocationName}
           setLocation={setUserLocation}
           setCoordsError={setCoordsError}
           setGettingCoords={setGettingCoords}
-          currentLocation={userLocation}
         />
       }
     </>
