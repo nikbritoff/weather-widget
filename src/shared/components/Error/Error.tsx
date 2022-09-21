@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  color: ${props => props.theme.textPrimary}
+  color: var(--colors-textPrimary);
 `;
 
 const Error = ({children}: {children: React.ReactNode}): JSX.Element => {

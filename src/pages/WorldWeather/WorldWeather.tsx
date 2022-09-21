@@ -9,17 +9,20 @@ const WorldWeather = (): JSX.Element => {
     setCoordsError,
     worldLocation,
     setWorldLocation,
+    worldLocationName,
+    setWorldLocationName
   } = useUserLocationContext();
 
   return (
     <>
       <Caption>World weather</Caption>    
       <Card location={worldLocation} coordsError={false}/>
-      <CitiesList 
+      <CitiesList
+        locationName={worldLocationName}
+        setLocationName={setWorldLocationName}
         setLocation={setWorldLocation}
         setCoordsError={setCoordsError}
         setGettingCoords={setGettingCoords}
-        currentLocation={worldLocation}
       />
     </>
   );

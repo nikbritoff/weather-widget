@@ -24,10 +24,10 @@ const StyledLink = styled(StyledComponentLink)<StyledComponentLinkProps>`
   font-weight: inherit;
   font-size: inherit;
   line-height: inherit;
-  color: ${props => props.theme.textPrimary};
+  color: var(--colors-textPrimary);
   
   &:hover {
-    color: ${props => props.theme.accent};
+    color: var(--colors-accent);
   }
 `;
 

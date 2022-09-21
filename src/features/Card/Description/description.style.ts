@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const StyledContainer = styled.div`
   min-height: 93px;
-  background-color: ${props => props.theme.bg};
+  background-color: var(--colors-bg);
   padding: 16px 20px 17px 16px;
 `;
 
@@ -10,7 +10,7 @@ export const StyledDate = styled.p`
   font-weight: 700;
   font-size: 15px;
   line-height: 20px;
-  color: ${props => props.theme.textPrimary};
+  color: var(--colors-textPrimary);
   opacity: 0.7;
   margin: 0;
 `;
@@ -23,7 +23,7 @@ export const StyledDescriptionText = styled.p`
   font-weight: 700;
   font-size: 12px;
   line-height: 16px;
-  color: ${props => props.theme.textSecondary};
+  color: var(--colors-textSecondary);
   opacity: 0.4;
   margin: 0;
   margin-top: 6px;

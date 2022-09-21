@@ -3,7 +3,7 @@ import { CITIES } from '../CitiesList/citiesList.mock';
 import { LocalStorageKey } from '../../shared/constants';
 import { LocationCoordinates } from '../../shared/types/locationCoordinates';
 import { userLocationContext } from './userLocation.context';
-import { checkLocalStorage, setItemInLocalStorage } from './userLocation.utils';
+import { getAppInfoItemInStorage, setAppInfoItemInStorage } from '../../shared/utils/storage';
 
 type UserLocationContextProviderProps = {
   children: React.ReactNode,
@@ -12,23 +12,31 @@ type UserLocationContextProviderProps = {
 const initialState = {
   autoDetection: true,
   userLocation: null,
+  userLocationName: '',
   gettingCoords: true,
   coordsError: false,
   worldLocation: CITIES.Miami,
+  worldLocationName: 'Miami',
 };
 
 export const UserLocationProvider: React.FC<UserLocationContextProviderProps> = (
   { children }: UserLocationContextProviderProps) => {
-  const [ autoDetection, setAutoDetection ] = useState<boolean>(checkLocalStorage(
+  const [ autoDetection, setAutoDetection ] = useState<boolean>(getAppInfoItemInStorage(
     LocalStorageKey.AutoDetection, initialState.autoDetection));
   const [ userLocation, setUserLocation ] = useState<null | LocationCoordinates>(initialState.userLocation);
+  const [ userLocationName, setUserLocationName ] = useState(initialState.userLocationName);
   const [ gettingCoords, setGettingCoords ] = useState<boolean>(initialState.gettingCoords);
   const [ coordsError, setCoordsError ] = useState<boolean>(initialState.coordsError);
   const [ worldLocation, setWorldLocation ] = useState<LocationCoordinates>(initialState.worldLocation);
+  const [ worldLocationName, setWorldLocationName ] = useState(initialState.worldLocationName);
 
   const changeAutoDetection = (status: boolean) => {
     setAutoDetection(status);
-    setItemInLocalStorage(LocalStorageKey.AutoDetection, status);
+    setAppInfoItemInStorage(LocalStorageKey.AutoDetection, status);
+
+    if (status === false) {
+      setUserLocationName('');
+    }
   };
 
   useEffect(() => {
@@ -76,12 +84,16 @@ export const UserLocationProvider: React.FC<UserLocationContextProviderProps> = 
       changeAutoDetection,
       userLocation,
       setUserLocation,
+      userLocationName,
+      setUserLocationName,
       gettingCoords,
       setGettingCoords,
       coordsError,
       setCoordsError,
       worldLocation,
       setWorldLocation,
+      worldLocationName,
+      setWorldLocationName,
     }}>
       {children}
     </userLocationContext.Provider>

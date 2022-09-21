@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { AppRoute } from '../../../features/AppRouter/appRouter.constants';
-import ThemeSwitcher from '../../../features/Theme/ThemeSwitcher';
+import AppThemeSwitcher from '../../../features/AppTheme/AppThemeSwitcher';
 import { StyledHeader, StyledNavList, StyledLink } from './header.style';
 
 const Header = (): JSX.Element => {
@@ -35,7 +35,7 @@ const Header = (): JSX.Element => {
                 </StyledLink>
               </li>
           </StyledNavList>
-          <ThemeSwitcher />
+          <AppThemeSwitcher />
         </StyledHeader>
   );
 };
